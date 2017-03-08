@@ -10,6 +10,8 @@ callTabletop = function () {
 
 function showInfo(mydata, tabletop){
 	
+	d3.selectAll('#wait').remove();
+	
 	//console.log(tabletop.foundSheetNames);
 	
 	// generate DOMs for lectures
