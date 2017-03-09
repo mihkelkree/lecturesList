@@ -1,0 +1,75 @@
+
+
+body {
+	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	font-size: 14px;
+}
+
+.myContainer{	
+	width:700px;
+	padding:40px 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.entry{
+	overflow:hidden;
+	margin:20px 0px;
+	padding:20px 20px;
+	border-bottom: 1px dashed #D3D3D3;
+}
+
+.pic{
+	float:left;
+	margin-right:20px;
+}
+
+.lechead{
+	
+}
+
+.lecnamediv{
+	
+}
+
+.lecinfodiv{
+	float:right;
+	white-space: nowrap;
+	margin-left:1em;
+	margin-top:-1em;
+	background:#f7fbff;
+	padding:6px;
+	border: 1px dashed #D3D3D3;
+}
+
+.lectorname{
+	margin:0px;
+	font-size:1.4em;
+	color:#0059A3;
+}
+
+.lectitle{
+	font-size:1.2em;
+	line-height:1.6em;
+}
+
+.faculty{
+	margin:0px;
+	margin-bottom:0.5em;
+	
+}
+
+.agegroup{
+	margin:0px;
+}
+
+.leccontent{
+	line-height:1.4em;
+	margin-top:0px;
+}
+
+.leccontact, .lecextrainfo{
+	font-size:0.9em;
+	
+}

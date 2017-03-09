@@ -1,5 +1,7 @@
 
-url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
+var url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
+
+var picWidth='140px';
 
 
 callTabletop = function () {
@@ -16,12 +18,39 @@ function showInfo(mydata, tabletop){
 	
 	// generate DOMs for lectures
 	var activeData = tabletop.sheets("Loengud").all();
+	
 	//console.log(lecData);
 	var lectures=d3.select("#lectures");	
-	lectures.selectAll("div").data(activeData).enter().append("div").attr("class","entry").
-		append('p').attr("class","lecname").text(function(d){ return d["Lektor"]}).
-		append('p').attr("class","title").text(function(d){ return d["Pealkiri"]}).
-		append('p').attr("class","content").text(function(d){ return d["Kirjeldus"]});
+	
+	// lecture entry
+	lectures = lectures.selectAll("div").data(activeData).enter().append("div").attr("class","entry");
+	
+	// picture div floating left
+	lectures.append('div').attr("class","pic").
+		append('img').attr('src',function(d){ return d["Foto"]}).attr('width',picWidth);
+	
+	// info div
+	var info = lectures.append('div').attr("class","info");
+	
+	// header row
+	var lecrow = info.append('div').attr("class","lechead");
+	
+	// faclulty and age group
+	var infodiv = lecrow.append('div').attr("class","lecinfodiv");
+	infodiv.append('p').attr("class","faculty").text(function(d){return "valdkond: "+d["Valdkond"]});
+	infodiv.append('p').attr("class","agegroup").text(function(d){return "sihtrühm: "+d["Kooliaste"]});
+	
+	// lector name and title
+	var namediv = lecrow.append('div').attr("class","lecnamediv");
+	namediv.append('p').attr("class","lectorname").text(function(d){ return d["Lektor"]});
+	namediv.append('p').attr("class","lectitle").text(function(d){ return d["Pealkiri"]});
+	
+	// descriotion, info, etc
+	info.append('p').attr("class","leccontent").text(function(d){ return d["Kirjeldus"]});
+	info.append('p').attr("class","leccontact").text(function(d){ return d["Kontakt"]});
+	info.append('p').attr("class","lecextrainfo").
+		text(function(d){ if (d["Lisainfo"]) return "Lisainfo: "+d["Lisainfo"]});
+	
 
 
 	// generate DOMs for programs
