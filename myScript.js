@@ -27,7 +27,9 @@ function showInfo(mydata, tabletop){
 	
 	// picture div floating left
 	lectures.append('div').attr("class","pic").
+		style('display', function(d){ if (d["Foto"]) return "inline"; else return "none"}).
 		append('img').attr('src',function(d){ return d["Foto"]}).attr('width',picWidth);
+			
 	
 	// info div
 	var info = lectures.append('div').attr("class","info");
