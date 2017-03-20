@@ -25,14 +25,23 @@ function showInfo(mydata, tabletop){
 	// lecture entry
 	lectures = lectures.selectAll("div").data(activeData).enter().append("div").attr("class","entry");
 	
+	var shortrow = lectures.append('div').attr("class","shortrow"); 
+	shortrow.append('p').attr("class","shortname").
+		text(function(d){return "<b>"+d["Lektor"]+"</b>, "+d["Pealkiri"]}).
+		on('click', activate);
+	
+	var expandable = lectures.append('div').attr("class","expandbox").
+		style('display','none'); 
+	
+	
 	// picture div floating left
-	lectures.append('div').attr("class","pic").
+	expandable.append('div').attr("class","pic").
 		style('display', function(d){ if (d["Foto"]) return "inline"; else return "none"}).
 		append('img').attr('src',function(d){ return d["Foto"]}).attr('width',picWidth);
 			
 	
 	// info div
-	var info = lectures.append('div').attr("class","info");
+	var info = expandable.append('div').attr("class","info");
 	
 	// header row
 	var lecrow = info.append('div').attr("class","lechead");
@@ -63,4 +72,11 @@ function showInfo(mydata, tabletop){
 		append('p').attr("class","title").text(function(d){ return d["Pealkiri"]}).
 		append('p').attr("class","content").text(function(d){ return d["Kirjeldus"]});
 		
+}
+
+activate = function(d){
+	
+	var par = $(this).parent().parent();
+	console.log(par);
+	par.find('.expandbox').css("display","inline");	
 }
