@@ -1,5 +1,8 @@
 
-var url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
+// var url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
+
+var url='localData/tabelLokaalne.htm';
+var localcsv = 'localData/tabel.csv';
 
 var picWidth='140px';
 
@@ -9,6 +12,19 @@ callTabletop = function () {
                      callback: showInfo,
                      simpleSheet: true } );
 }
+
+callLocalLoad = function () {
+	
+	d3.csv(localcsv, function(data){generateEntries(data);} ); 
+	
+}
+
+function generateEntries(data){
+
+	console.log(data);
+	
+}
+
 
 function showInfo(mydata, tabletop){
 	
