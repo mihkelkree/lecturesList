@@ -1,7 +1,7 @@
 
 
 body {
-	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	font-family: "Open Sans",Helvetica,Arial,Verdana,sans-serif;
 	font-size: 14px;
 }
 
@@ -14,28 +14,40 @@ body {
 }
 
 
-
 .shortname{
 	text-overflow: ellipsis;
 	white-space:nowrap;
 	overflow:hidden;
-	cursor: pointer;
+}
+
+.emptynamerow{
+	
+	color: rgb(0, 97, 170);
+	text-align:center;
+	font-weight:bold;
+	padding-top:0.5em;
+	padding-bottom:1em;
+	margin:0;
 }
 
 .entry{
 	overflow:hidden;
-	margin:20px 0px;
-	padding:20px 20px;
-	border: 1px dashed #D3D3D3;
+	padding:0px 15px;	
+	border-left: 1px solid #D3D3D3;
+	border-right: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
 }
-
 
 .entry:nth-of-type(odd) {
       background-color:#f7fbff;
 }
 
+.entry:last-of-type {
+	  border-bottom: 1px solid #D3D3D3;
+}
+
 .shortrow{
-	
+	cursor: pointer;
 }
 
 .pic{
@@ -49,17 +61,16 @@ body {
 }
 
 .lecnamediv{
-	
 }
 
 .lecinfodiv{
 	float:right;
 	white-space: nowrap;
 	margin-left:1em;
-	margin-top:-1em;
-	background:#fff7ec;
-	padding:6px;
-	border: 1px dashed #D3D3D3;
+	margin-top:-1.4em;
+	margin-bottom:0.5em;	
+	padding:10px;	
+	text-align:right;
 }
 
 .lectorname{
@@ -74,17 +85,23 @@ body {
 }
 
 .faculty{
+	font-size:1.2em;
 	margin:0px;
 	margin-bottom:0.5em;
-	
+	text-align:right;
 }
 
 .agegroup{
 	margin:0px;
+	margin-bottom:0.5em;
+}
+
+.topic{
+	margin:0px;
 }
 
 .leccontent{
-	line-height:1.4em;
+	line-height:1.5em;
 	margin-top:0px;
 }
 
