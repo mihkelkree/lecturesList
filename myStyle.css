@@ -11,14 +11,40 @@ body {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom:60px;
 }
 
+.shortrow{
+	cursor: pointer;
+}
 
 .shortname{
-	text-overflow: ellipsis;
-	white-space:nowrap;
-	overflow:hidden;
+	margin:0px 0px;		
+	width: 100%;
+	display:flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	
 }
+
+.shortname .nametitle{
+	white-space: nowrap;
+    overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 8px 0px;
+}
+	
+
+.shortname .toright{
+	white-space: nowrap;
+	padding:0.2em 0.4em;
+	margin: 8px 0px;
+	margin-left:2em;
+}
+
+
+
+
 
 .emptynamerow{
 	
@@ -46,9 +72,7 @@ body {
 	  border-bottom: 1px solid #D3D3D3;
 }
 
-.shortrow{
-	cursor: pointer;
-}
+
 
 .pic{
 	float:left;
@@ -71,6 +95,7 @@ body {
 	margin-bottom:0.5em;	
 	padding:10px;	
 	text-align:right;
+	border: 1px solid #D3D3D3;
 }
 
 .lectorname{

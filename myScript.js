@@ -2,10 +2,10 @@
 // ideed lisada:
 // lahtirullitud valja sulgemiseks lisada yles miinusmargiga nupuke
 
-// var url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
+var url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
 
-var url='localData/tabelLokaalne.htm';
-var localcsv = 'localData/tabel.csv';
+//var url='localData/tabelLokaalne.htm';
+//var localcsv = 'localData/tabel.csv';
 
 var picWidth='140px';
 
@@ -13,13 +13,16 @@ function getBackCol(v){
 
 	switch(v){
 		case "LT": return "rgb( 0, 154, 198)";
+		case "HUM": return "rgb( 139, 3, 4)";
+		case "MED": return "rgb( 0, 66, 130)";
+		case "SOTS": return "rgb( 240, 78, 35)";
 	}
 }
 
 function getTextCol(v){
 
-	switch(v){
-		case "LT": return "rgb( 255, 255, 255)";
+	if ( v=="LT" || v=="HUM" || v=="MED" || v=="SOTS" ){
+		return "#f0f0f0";
 	}
 }
 
@@ -53,7 +56,10 @@ function showInfo(mydata, tabletop){
 	//console.log(tabletop.foundSheetNames);
 	
 	// generate DOMs for lectures
-	var activeData = tabletop.sheets("Loengud").all();
+	var loengudData = tabletop.sheets("Loengud").all();
+	
+	generateEntries(loengudData);
+	return;
 	
 	//console.log(lecData);
 	var lectures=d3.select("#lectures");	
@@ -63,7 +69,7 @@ function showInfo(mydata, tabletop){
 	
 	var shortrow = lectures.append('div').attr("class","shortrow"); 
 	shortrow.append('p').attr("class","shortname").
-		text(function(d){return "<b>"+d["Lektor"]+"</b>, "+d["Pealkiri"]}).
+		text(function(d,i){return "<b>"+d["Lektor"]+"</b>, "+d["Pealkiri"]}).
 		on('click', activate);
 	
 	var expandable = lectures.append('div').attr("class","expandbox").
@@ -125,11 +131,21 @@ function generateEntries(data){
 	// single row info
 	var shortrow = lectures.append('div').attr("class","shortrow").on('click', activate); 
 	
-	var rowp = shortrow.append('p').attr("class","shortname");
-	rowp.append('span').style('font-size','1.2em').
-			text(function(d){return d["Lektor"]});
+	var row = shortrow.append('div').attr("class","shortname");
+	
+	var rowp = row.append('p').attr("class",'nametitle');
 	rowp.append('span').
-			text(function(d){return ", "+d["Pealkiri"]});
+		text(function(d,i){return (i+1)+". ";});
+	rowp.append('span').style('font-size','1.2em').
+		text(function(d,i){return d["Lektor"]});
+	rowp.append('span').attr("class","title").
+		text(function(d){return ", "+d["Pealkiri"]});
+		
+	row.append('p').attr("class","toright").
+		style('background',function(d){return getBackCol(d["Valdkond"])}).
+		style('color',function(d){return getTextCol(d["Valdkond"])}).
+		text(function(d,i){return d["Teema"]+", "+d["Kooliaste"]});
+	
 		
 	shortrow.append('p').attr("class","emptynamerow").style('display','none').
 			text('-');
@@ -164,7 +180,7 @@ function generateEntries(data){
 	infodiv.append('p').attr("class","agegroup").
 		text(function(d){return "tase: "+d["Kooliaste"]});
 	infodiv.append('p').attr("class","topic").
-		text(function(d){return "teema: ajalugu"});
+		text(function(d){return "teema: "+d["Teema"]});
 	
 	// lector name and title
 	var namediv = lecrow.append('div').attr("class","lecnamediv");
@@ -194,7 +210,7 @@ activate = function(d){
 		
 	}	
 	if (a==1) {
-		par.find('.shortname').css("display","block");
+		par.find('.shortname').css("display","flex");
 		par.find('.emptynamerow').css("display","none");
 		par.find('.expandbox').css("display","none");
 	}

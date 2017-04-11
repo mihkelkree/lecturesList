@@ -16,8 +16,8 @@
 <script>
     
 	$(document).ready(function() {
-        callLocalLoad();
-        //callTabletop();
+        //callLocalLoad();
+        callTabletop();
 	});
 
 </script>
@@ -26,7 +26,12 @@
 <body>
     
     <div class="myContainer">
-    <div id="lectures"><h1 style="text-align:center; margin-bottom:2em">TÜ pakutavad loengud koolidele</h1><p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p></div>
+    
+    <div id="lectures">
+        <h1 style="text-align:center; margin-bottom:2em">TÜ pakutavad loengud koolidele</h1>
+        <p>Täpsema info nägemiseks vajutage loengu pealkirjale.</p>
+        <p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p>
+    </div>
     <!--
     <div id="programs"><h1 style="text-align:center; margin-bottom:2em; margin-top:3em">TÜ pakutavad haridusprogammid koolidele</h1><p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p></div>
     </div>
