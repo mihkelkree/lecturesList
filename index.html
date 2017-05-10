@@ -8,27 +8,73 @@
 
 <link rel="stylesheet" type="text/css" href="myStyle.css">
 
+
 <script src='lib/jquery.min.js'></script>
 <script src='lib/d3.v4.min.js'></script>
 <script src='lib/tabletop.min.js'></script>
 <script src='myScript.js'></script>
+<script src='helperCode.js'></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css">
+
+
 
 <script>
+    
+
+    var slMax=0;
+    var slMin=0;
     
 	$(document).ready(function() {
         //callLocalLoad();
         callTabletop();
+                
+        $('#slide').slider({
+            id: "mySlider",
+            tooltip: 'always',
+            min: 5, max: 12, range: true, value: [5, 12],
+          // callback
+            formatter: function formatter(val) {
+              if (Array.isArray(val)) {
+                slMin=val[0];
+                slMax=val[1];
+                return val[0] + ". kl -  " + val[1] + ". kl";
+              } else {
+                return val;
+              }
+            },
+            
+            slide: function(e,u){
+                console.log("test");
+            }
+            
+        }).on('slideStop', callChange);
+        
 	});
 
+
+
 </script>
+    
 
 </head>
 <body>
     
     <div class="myContainer">
     
+    
+    
+     <input id="slide" data-slider-id='mySlider' type="text" />
+    
     <div id="lectures">
         <h1 style="text-align:center; margin-bottom:2em">TÜ pakutavad loengud koolidele</h1>
+        
+        
+        
         <p>Täpsema info nägemiseks vajutage loengu pealkirjale.</p>
         <p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p>
     </div>

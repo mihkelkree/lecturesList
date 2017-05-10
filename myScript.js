@@ -118,7 +118,20 @@ function showInfo(mydata, tabletop){
 
 function generateEntries(data){
 
-	console.log(data);
+	console.log(data.length);
+	
+	for (i=0; i<data.length; i++){
+		d=data[i];
+		tmp=getNumbers(d["Klass"]);
+		d["klRangeMin"]=tmp[0];
+		if (tmp.length>1){
+			d["klRangeMax"]=tmp[tmp.length-1];
+		}else{
+			d["klRangeMax"]=tmp[0];
+		}
+		d["Tase"]=klassRange(d);
+		//data[i]=d;
+	}
 	
 	d3.selectAll('#wait').remove();
 	
@@ -126,8 +139,12 @@ function generateEntries(data){
 	
 	// lecture entry
 	lectures = lectures.selectAll("div").data(data).enter().
-		append("div").attr("class","entry").attr("status","0");
-	
+		append("div").attr("class","entry").attr("status","0"). //status refers to opened or closed box
+		attr("rangefilter","true").
+		attr("klRangeMin",function(d){ return d["klRangeMin"];}).
+		attr("klRangeMax",function(d){ console.log(d["klRangeMax"]); return d["klRangeMax"];});
+			
+		
 	// single row info
 	var shortrow = lectures.append('div').attr("class","shortrow").on('click', activate); 
 	
@@ -144,7 +161,7 @@ function generateEntries(data){
 	row.append('p').attr("class","toright").
 		style('background',function(d){return getBackCol(d["Valdkond"])}).
 		style('color',function(d){return getTextCol(d["Valdkond"])}).
-		text(function(d,i){return d["Teema"]+", "+d["Kooliaste"]});
+		text(function(d,i){return d["Teema"]+", "+d["Tase"]});
 	
 		
 	shortrow.append('p').attr("class","emptynamerow").style('display','none').
@@ -178,7 +195,7 @@ function generateEntries(data){
 		text(function(d){return d["Valdkond"]+" valdkond"});
 	
 	infodiv.append('p').attr("class","agegroup").
-		text(function(d){return "tase: "+d["Kooliaste"]});
+		text(function(d){return "sihtrühm: "+d["Tase"]});
 	infodiv.append('p').attr("class","topic").
 		text(function(d){return "teema: "+d["Teema"]});
 	
@@ -217,4 +234,33 @@ activate = function(d){
 
 	par.attr("status",1-a);
 	
+}
+
+// slider changed
+callChange = function(){
+	console.log("slider changed");
+	console.log(slMin);
+	console.log(slMax);
+	d3.selectAll(".entry").style("display", function(d){ return checkDisplay(d);});
+}
+
+checkDisplay = function(d){
+	a=d["klRangeMin"];
+	b=d["klRangeMax"];
+	if (slMin<=b && slMax >=a){
+		return "block";
+	}
+	else{
+		return "none";
+	}
+	
+}
+
+klassRange = function(d){
+	s=d["klRangeMin"];
+	if (d["klRangeMax"]>d["klRangeMin"]){
+		s=s+"-" + d["klRangeMax"];
+	}
+	s=s+". kl";
+	return s;
 }
