@@ -29,6 +29,8 @@
     var slMax=0;
     var slMin=0;
     
+    var activeFilt ='KOIK';
+    
 	$(document).ready(function() {
         //callLocalLoad();
         callTabletop();
@@ -69,35 +71,38 @@
     
     
     <div>
-        <h1 style="text-align:center; margin-bottom:2em">TÜ pakutavad loengud koolidele</h1>
+        <h1 style="text-align:center; margin-bottom:1em">TÜ pakutavad loengud koolidele</h1>
         
-        <div style="margin-bottom:2em">
-        <span style="font-size:1.4em; margin-left:6.45em; margin-right:2em">Filtreeri sihgrupi järgi:</span>
+        <div style="font-size:1.3em">
+        <p><b>Infoks valdkondade esindajatele:</b> loengute lisamiseks palun täiendage vastavat Google Drive'i tabelit (link peaks jääma ülikooli siseringi, sest see annab kirjutamisõiguse), pöörates tähelepanu valdkonna tähiste ja klasside formaadile. Kõik tabelisse kantud veerud kajasutvad allolevas loendis. Kindlasti lisage ka piltide linke!
+        </p>  
+        <p><b>Infoks TÜ veebiarendajale:</b> käesolev prototüüp on katse esitada ülikoolilt koolidele pakutavaid loenguid kompaktsel ja filtreeritaval viisil, mille sisendinfo oleks samas kergesti ja kiiresti muudetav-toimetatav laia ringi ülikooli töötajate kaasabil. Praegune kujundus on fikseeritud laiusega, kuid tuleks veel lisada <i>mobile-responsive</i> lahendus enne, kui saaksime selle integreerida teaduskooli kodulehel <a href="http://www.teaduskool.ut.ee/et/ulikoolilt-opilasele">vastavasse rubriiki</a>.
+        </p> 
+        <p style="text-align:right">Mihkel Kree, 08.06.2017
+        </p> 
+        </div>
+        
+        <hr>
+        <div style="margin-bottom:2em; margin-top:3em">
+        <span style="font-size:1.3em; margin-left:2.05em; margin-right:2em">Filtreerige sihgrupi (klasside) järgi:</span>
         <input id="slide" data-slider-id='mySlider' type="text" />
         </div>
        
         <div>
-        <span style="font-size:1.4em">Filtreeri loengud TÜ valdkonna järgi:</span>
+        <span style="font-size:1.3em">Filtreerige loengud TÜ valdkonna järgi:</span>
         <span class="filt" id="KOIK">KÕIK</span>
         <span class="filt" id="HUM">HUM</span>
         <span class="filt" id="SOTS">SOTS</span>
         <span class="filt" id="MED">MED</span>
         <span class="filt" id="LT">LT</span>
         
-        
-    
-        <hr>
         </div>
         <div id="lectures">
-            <p style="font-size:1.2em; margin-bottom:1em">Täpsema info nägemiseks klikkige loengu pealkirjale:</p>
+            <p style="font-size:1.3em; margin-bottom:1em; margin-top:1em">Täpsema info nägemiseks klikkige loengu pealkirjale:</p>
             <p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p>
         </div>
     </div>
-    <!--
-    <div id="programs"><h1 style="text-align:center; margin-bottom:2em; margin-top:3em">TÜ pakutavad haridusprogammid koolidele</h1><p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p></div>
-    </div>
-    -->
-    
+
 </body>
 
     <script>
@@ -115,37 +120,5 @@
         toggl["HUM"]='block';
         toggl["SOTS"]='block';
         
-        
-        function checkValdkond(vald,d){
-            a=d["Valdkond"];
-            return toggl[a];
-        }        
-
-        function myFilt(vald){
-            
-            if (vald=="KOIK"){
-                for (var key in toggl) {
-                    toggl[key]='block';
-                    d3.select("#"+key).style('background','');
-                }
-                d3.select("#KOIK").style('background','');
-            }
-            else{
-                for (var key in toggl) {
-                    if (key==vald){
-                        toggl[key]='block';
-                        d3.select("#"+key).style('background','');
-                    }
-                    else{
-                        toggl[key]='none';
-                        d3.select("#"+key).style('background','gray');
-                    }
-                }
-                d3.select("#KOIK").style('background','gray');
-            }
-            
-            d3.selectAll(".entry").style("display", function(d){ return checkValdkond(vald,d);});
-        }
-
-    </script
+    </script>
 </html>    

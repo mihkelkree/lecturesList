@@ -1,11 +1,6 @@
 
-// ideed lisada:
-// lahtirullitud valja sulgemiseks lisada yles miinusmargiga nupuke
 
 var url = 'https://docs.google.com/spreadsheets/d/1nK4XywW8SrsP2IkRaImwXg7BT_W_sNGDxtyrHJTesIU/pubhtml';
-
-//var url='localData/tabelLokaalne.htm';
-//var localcsv = 'localData/tabel.csv';
 
 var picWidth='140px';
 
@@ -238,16 +233,16 @@ activate = function(d){
 
 // slider changed
 callChange = function(){
-	console.log("slider changed");
-	console.log(slMin);
-	console.log(slMax);
-	d3.selectAll(".entry").style("display", function(d){ return checkDisplay(d);});
+	//myFilt(activeFilt);
+	d3.selectAll(".entry").style("display", function(d){ return checkDisplay(d);});	
 }
 
 checkDisplay = function(d){
 	a=d["klRangeMin"];
 	b=d["klRangeMax"];
-	if (slMin<=b && slMax >=a){
+	v=d["Valdkond"];
+	tog=toggl[v];
+	if ((slMin<=b && slMax >=a) && tog=='block'){
 		return "block";
 	}
 	else{
@@ -264,3 +259,34 @@ klassRange = function(d){
 	s=s+". kl";
 	return s;
 }
+
+
+function myFilt(vald){
+    activeFilt=vald;
+	
+	// change the colors of the selection buttons according to activation
+    if (vald=="KOIK"){
+        for (var key in toggl) {
+            toggl[key]='block';
+            d3.select("#"+key).style('background','');
+        }
+        d3.select("#KOIK").style('background','');
+    }
+    else{
+        for (var key in toggl) {
+            if (key==vald){
+                toggl[key]='block';
+                d3.select("#"+key).style('background','');
+            }
+            else{
+                toggl[key]='none';
+                d3.select("#"+key).style('background','gray');
+            }
+        }
+        d3.select("#KOIK").style('background','gray');
+    }
+    
+    callChange();
+}
+
+
