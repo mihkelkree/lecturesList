@@ -18,6 +18,10 @@ body {
 	background: #a8ddb5;
 }
 
+.slider.slider-horizontal{
+	width:300px!important;
+}
+
 .slider{
 	margin: 0 auto !important;
 }
@@ -43,7 +47,7 @@ body {
 	background: rgb( 240, 78, 35);
 }
 #KOIK{
-	background: rgb( 0, 79, 190);
+	background: rgb( 0, 97, 170);
 }
 
 
