@@ -95,20 +95,21 @@ body {
 .entry{
 	overflow:hidden;
 	padding:0px 15px;	
-	border-left: 1px solid #D3D3D3;
-	border-right: 1px solid #D3D3D3;
-	border-top: 1px solid #D3D3D3;
+	border: 1px solid #D3D3D3;
+	margin-top: -1px;
+	
 }
 
 .entry:nth-of-type(odd) {
       background-color:#f7fbff;
 }
 
-.entry:last-of-type {
-	  border-bottom: 1px solid #D3D3D3;
+
+
+
+.info{
+	margin-bottom:1.6em;
 }
-
-
 
 .pic{
 	float:left;
@@ -116,12 +117,7 @@ body {
 	margin-bottom:10px;
 }
 
-.lechead{
-	
-}
 
-.lecnamediv{
-}
 
 .lecinfodiv{
 	float:right;
