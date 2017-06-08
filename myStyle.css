@@ -18,6 +18,37 @@ body {
 	background: #a8ddb5;
 }
 
+.slider{
+	margin: 0 auto !important;
+}
+
+.filt{
+	margin:0.5em;	
+	padding:0.2em 0.6em;
+	font-size:1.2em;
+	cursor: pointer;
+	color:white;
+}
+
+#LT{
+	background: rgb( 0, 154, 198);
+}
+#MED{
+	background: rgb( 0, 66, 130);
+}
+#HUM{
+	background: rgb( 139, 3, 4);
+}
+#SOTS{
+	background: rgb( 240, 78, 35);
+}
+#KOIK{
+	background: rgb( 0, 79, 190);
+}
+
+
+
+
 .shortrow{
 	cursor: pointer;
 }
@@ -45,9 +76,6 @@ body {
 	margin: 8px 0px;
 	margin-left:2em;
 }
-
-
-
 
 
 .emptynamerow{

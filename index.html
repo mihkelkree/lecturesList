@@ -68,14 +68,29 @@
     
     
     
-     <input id="slide" data-slider-id='mySlider' type="text" />
+    <hr>
+    
+    <div style="text-align:center">
+    <br>
+    <input id="slide" data-slider-id='mySlider' type="text" />
+    </div>
     
     <div id="lectures">
         <h1 style="text-align:center; margin-bottom:2em">TÜ pakutavad loengud koolidele</h1>
         
+       
+        <div>
+        <span style="font-size:1.2em">Filtreeri loengud TÜ valdkonna järgi:</span>
+        <span class="filt" id="KOIK">KÕIK</span>
+        <span class="filt" id="LT">LT</span>
+        <span class="filt" id="MED">MED</span>
+        <span class="filt" id="SOTS">SOTS</span>
+        <span class="filt" id="HUM">HUM</span>
+    
+        <hr>
+        </div>
         
-        
-        <p>Täpsema info nägemiseks vajutage loengu pealkirjale.</p>
+        <p style="font-size:1.2em; margin-bottom:1em">Täpsema info nägemiseks vajutage loengu pealkirjale.</p>
         <p id="wait">Üks hetk, andmeid loetakse Google'i serverist ...</p>
     </div>
     <!--
@@ -85,4 +100,45 @@
     
 </body>
 
+    <script>
+
+        d3.select("#KOIK").on('click', function(){myFilt("KOIK");});
+        d3.select("#LT").on('click', function(){myFilt("LT");});
+        d3.select("#MED").on('click', function(){myFilt("MED");});
+        d3.select("#HUM").on('click', function(){myFilt("HUM");});
+        d3.select("#SOTS").on('click', function(){myFilt("SOTS");});
+        
+
+        var toggl={};
+        toggl["LT"]='block';
+        toggl["MED"]='block';
+        toggl["HUM"]='block';
+        toggl["SOTS"]='block';
+
+        function checkValdkond(vald,d){
+            a=d["Valdkond"];
+            return toggl[a];
+        }
+        
+
+        function myFilt(vald){
+            
+            if (vald=="KOIK"){
+                for (var key in toggl) toggl[key]='block';
+            }
+            else{
+                for (var key in toggl) {
+                    if (key==vald){
+                        toggl[key]='block';
+                    }
+                    else{
+                        toggl[key]='none';
+                    }
+                }
+            }
+            
+            d3.selectAll(".entry").style("display", function(d){ return checkValdkond(vald,d);});
+        }
+
+    </script
 </html>    
