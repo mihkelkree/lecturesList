@@ -7,12 +7,15 @@ body {
 
 .myContainer{	
 	width:700px;
-	padding:40px 0px;
+	padding:40px 20px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom:60px;
 }
+
+
+
 
 #mySlider .slider-selection {
 	background: #a8ddb5;
@@ -76,20 +79,20 @@ body {
 
 .shortname .toright{
 	white-space: nowrap;
-	padding:0.2em 0.4em;
-	margin: 8px 0px;
+	padding:0.1em 0.4em;
+	margin: 0.6em 0em;
 	margin-left:2em;
 }
 
 
 .emptynamerow{
 	
-	color: rgb(0, 97, 170);
+	color: #aaa;
 	text-align:center;
-	font-weight:bold;
 	padding-top:0.5em;
 	padding-bottom:1em;
 	margin:0;
+	font-size:0.9em;
 }
 
 .entry{
@@ -166,3 +169,26 @@ body {
 	font-size:0.9em;
 	
 }
+
+
+@media only screen and (max-width: 700px) {
+	.myContainer{
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.myContainer{
+		width: 100%;
+	}
+	
+	.shortname .toright {
+		font-size: 0.9em;
+		padding:0.1em 0.4em;
+		margin: 0.8em 0em;
+		margin-left:1em;
+	}
+	
+}
+
+

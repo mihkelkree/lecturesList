@@ -137,7 +137,7 @@ function generateEntries(data){
 		append("div").attr("class","entry").attr("status","0"). //status refers to opened or closed box
 		attr("rangefilter","true").
 		attr("klRangeMin",function(d){ return d["klRangeMin"];}).
-		attr("klRangeMax",function(d){ console.log(d["klRangeMax"]); return d["klRangeMax"];});
+		attr("klRangeMax",function(d){ return d["klRangeMax"];});
 			
 		
 	// single row info
@@ -160,8 +160,7 @@ function generateEntries(data){
 	
 		
 	shortrow.append('p').attr("class","emptynamerow").style('display','none').
-			text('-');
-			//append('img').attr('src','localData/minus32.png').attr('width','16px'); 
+			text('[ Sulge ]');
 	
 	
 	var expandable = lectures.append('div').attr("class","expandbox").
