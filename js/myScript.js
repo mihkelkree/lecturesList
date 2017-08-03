@@ -150,7 +150,7 @@ function generateEntries(data){
 	// single row info
 	var shortrow = lectures.append('div').attr("class","shortrow").on('click', activate); 
 	
-	var row = shortrow.append('div').attr("class","shortname");
+	var row = shortrow.append('div').attr("class","shortname").style("margin-bottom","0px");;
 	
 	var rowp = row.append('p').attr("class",'nametitle');
 	rowp.append('span').
