@@ -1,6 +1,4 @@
 
-
-
 .myContainer{	
 	width:700px;
 	padding:40px 20px;
@@ -11,8 +9,9 @@
 }
 
 .mytext {
-	font-family: "Ubuntu-Light",sans-serif;
+	font-family: "Open Sans",sans-serif;
 	font-size: 14px;
+	line-height:22 px;
 }
 
 
@@ -74,6 +73,9 @@
 	
 
 .shortname .toright{
+	
+	font-family: "Ubuntu",sans-serif;
+	
 	white-space: nowrap;
 	padding:0.1em 0.4em;
 	margin: 0.6em 0em;
