@@ -21,16 +21,13 @@ body {
 	background: #a8ddb5;
 }
 
-.slider.slider-horizontal{
-	width:300px!important;
-}
 
 .slider{
 	margin: 0 auto !important;
 }
 
 .filt{
-	margin:0.5em;	
+	margin:0.2em;	
 	padding:0.2em 0.6em;
 	font-size:1.2em;
 	cursor: pointer;
@@ -65,8 +62,7 @@ body {
 	width: 100%;
 	display:flex;
 	flex-wrap: nowrap;
-	justify-content: space-between;
-	
+	justify-content: space-between;	
 }
 
 .shortname .nametitle{
@@ -82,6 +78,10 @@ body {
 	padding:0.1em 0.4em;
 	margin: 0.6em 0em;
 	margin-left:2em;
+	
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
 }
 
 
@@ -97,7 +97,7 @@ body {
 
 .entry{
 	overflow:hidden;
-	padding:0px 15px;	
+	padding:0em 1em;	
 	border: 1px solid #D3D3D3;
 	margin-top: -1px;
 	
@@ -171,24 +171,40 @@ body {
 }
 
 
+
+
+@media only screen and (min-width: 701px) {
+	.shortname{
+		font-size:1.1em;
+	}
+	
+}
+
 @media only screen and (max-width: 700px) {
 	.myContainer{
 		width: 100%;
 	}
 }
 
+@media only screen and (max-width: 600px) {
+
+}
+
 @media only screen and (max-width: 480px) {
-	.myContainer{
-		width: 100%;
-	}
 	
 	.shortname .toright {
-		font-size: 0.9em;
-		padding:0.1em 0.4em;
-		margin: 0.8em 0em;
-		margin-left:1em;
+
 	}
 	
+	.shortname{
+		flex-direction: column;
+	}
+	
+	.shortname .toright{
+		margin-left: auto;
+		margin-top:-0.2em;
+	}
 }
+
 
 

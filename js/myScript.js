@@ -16,9 +16,16 @@ function getBackCol(v){
 
 function getTextCol(v){
 
-	if ( v=="LT" || v=="HUM" || v=="MED" || v=="SOTS" ){
-		return "#f0f0f0";
+		
+	switch(v){
+		case "LT": return "#f0f0f0";
+		case "HUM": return "#f0f0f0";
+		case "MED": return "#f0f0f0";
+		case "SOTS": return "#f0f0f0";
 	}
+	
+	
+	
 }
 
 
