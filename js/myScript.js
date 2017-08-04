@@ -141,14 +141,14 @@ function generateEntries(data){
 	
 	// lecture entry
 	lectures = lectures.selectAll("div").data(data).enter().
-		append("div").attr("class","entry").attr("status","0"). //status refers to opened or closed box
+		append("div").attr("class","entry").style("margin-bottom","0px").attr("status","0"). //status refers to opened or closed box
 		attr("rangefilter","true").
 		attr("klRangeMin",function(d){ return d["klRangeMin"];}).
 		attr("klRangeMax",function(d){ return d["klRangeMax"];});
 			
 		
 	// single row info
-	var shortrow = lectures.append('div').attr("class","shortrow").on('click', activate); 
+	var shortrow = lectures.append('div').attr("class","shortrow").style("margin-bottom","0px").on('click', activate); 
 	
 	var row = shortrow.append('div').attr("class","shortname").style("margin-bottom","0px");;
 	
