@@ -69,6 +69,7 @@
     overflow: hidden;
 	text-overflow: ellipsis;
 	margin: 8px 0px;
+	margin-top:10px;
 }
 	
 
@@ -128,11 +129,19 @@
 	float:right;
 	white-space: nowrap;
 	margin-left:1em;
-	margin-top:-1.4em;
+	margin-top:0em;
 	margin-bottom:0.5em;	
 	padding:10px;	
 	text-align:right;
 	border: 1px solid #D3D3D3;
+	
+	
+	font-family: "Ubuntu",sans-serif;
+	line-height:1.15em;
+	
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
 }
 
 .lectorname{
