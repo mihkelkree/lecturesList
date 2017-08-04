@@ -95,7 +95,7 @@ function generateEntries(data){
 	// single row info
 	var shortrow = lectures.append('div').attr("class","shortrow").style("margin-bottom","0px").on('click', activate); 
 	
-	var row = shortrow.append('div').attr("class","shortname").style("margin-bottom","0px");;
+	var row = shortrow.append('div').attr("class","shortname").style("margin-bottom","0px");
 	
 	var rowp = row.append('p').attr("class",'nametitle');
 	rowp.append('span').
@@ -147,7 +147,7 @@ function generateEntries(data){
 	
 	// lector name and title
 	var namediv = lecrow.append('div').attr("class","lecnamediv");
-	namediv.append('p').attr("class","lectorname").style("margin-bottom","0.3em").text(function(d){ return d["Lektor"]});
+	namediv.append('p').attr("class","lectorname").style("margin-bottom","0.3em").style("line-height","1.5em").text(function(d){ return d["Lektor"]});
 	namediv.append('p').attr("class","lectitle").text(function(d){ return d["Pealkiri"]});
 	
 	// descriotion, info, etc
